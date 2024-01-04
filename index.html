@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      article {
+        max-width: 500px;
+        margin: 0 auto;
+        width: 100%;
+        text-align: justify;
+        font-size: 20px;
+      }
+
+      article p {
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <article lang="en">
+      <p>
+        The hyphens property controls hyphenation of text in block level
+        elements. You can prevent hyphenation from happening at all, allow it,
+        or only allow it when certain characters are present.
+      </p>
+      <p>
+        Note that hyphens is language-sensitive. Its ability to find break
+        opportunities depends on the language, defined in the lang attribute of
+        a parent element. Not all languages are supported yet, and support
+        depends on the specific browser.
+      </p>
+      <h2>Syntax</h2>
+      <p>.element { hyphens: none | manual | auto }</p>
+      <h4>hyphens: none</h4>
+      <p>
+        Words are never hyphenated at line breaks, even if characters inside the
+        word suggest where hyphenation could or should go.
+      </p>
+      <h4>hyphens: manual</h4>
+      <p>
+        Words are only broken at line breaks where there are characters inside
+        the word that suggest line break opportunities. There are two characters
+        that suggest line break opportunity:
+      </p>
+      <ul>
+        <li>
+          U+2010 (HYPHEN): the “hard” hyphen character indicates a visible line
+          break opportunity. Even if the line is not actually broken at that
+          point, the hyphen is still rendered. Literally a "-"".
+        </li>
+        <li>
+          U+00AD (SHY): an invisible, "soft" hyphen. This character is not
+          rendered visibly; instead, it suggests a place where the browser might
+          choose to break the word if necessary. In HTML, you can use &shy to
+          insert a soft hyphen.
+        </li>
+      </ul>
+      <h4>hyphens: auto</h4>
+      <p>
+        Words can be broken at appropriate hyphenation points either as
+        determined by hyphenation characters (see above) inside the word or as
+        determined automatically by a language-appropriate hyphenation resource
+        (if supported by the browser or provided via @hyphenation-resource).
+      </p>
+      <p>
+        Conditional hyphenation characters inside a word, if present, take
+        priority over automatic resources when determining hyphenation points
+        within the word.
+      </p>
+      <h4>hyphens: all</h4>
+      <p>
+        Deprecated, do not use. This was only in the spec temporarily for
+        testing.
+      </p>
+      <h3>Browser support</h3>
+      <p>
+        Safari 5+ requires -webkit-, Firefox 6+ requires -moz-, IE 10+ requires
+        -ms-, iOS 4.2+ requires -webkit-.
+      </p>
+      <p>
+        Chrome less than 55 and Android browser actually support
+        -webkit-hyphens: none, which is the default value, but none of the other
+        values.
+      </p>
+      <p>
+        In Firefox and Internet Explorer, automatic hyphenation only works for
+        some languages (defined with the lang attribute). See
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/CSS/hyphens?redirectlocale=en-US&redirectslug=CSS%2Fhyphens#browser_compatibility"
+          >this note</a
+        >
+        for a comprehensive list of supported languages.
+      </p>
+      <p>
+        If you are writing a web-based document that really need hyphenation,
+        you can use <a href="https://github.com/mnater/hyphenator">Hyphenator.js</a> which is a library based on a vast dictionary
+        that will automatically inject soft hyphens and zero-width spaces into
+        your content.
+      </p>
+      <p>
+        Without JavaScript, you'll have to rely on both hyphens and word-wrap:
+      </p>
+      <p>
+        .hyphenate {
+        <br />
+        word-wrap: break-word;
+        <br />
+        overflow-wrap: break-word;
+        <br />
+        -webkit-hyphens: auto;
+        <br />
+        -moz-hyphens: auto;
+        <br />
+        hyphens: auto;
+        <br />
+        }
+      </p>
+    </article>
+  </body>
+</html>
